@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+        <script
+        src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+     $( document ).ready(function() {
+
+        $('#link').on('input',function(e){
+        var link = $("#link").val();  //use-the-flex-direction-property-to-make-a-row.json
+        $("#output").text("");
+         
+
+        $.ajax({
+    dataType : 'json',
+    url: link,
+    type: 'post',
+    //data:  "text=" + myLineBreak,
+    success: function(data) {
+        //read json   
+        console.log("Great success!");
+        console.log(data);
+        var a = [];
+
+        //Loop through data
+        for(var prop in data) {
+            console.log(prop,data[prop]); 
+            a.push(prop,data[prop]);
+        }
+        
+        var aa = [];
+        //BRA GRUND --- !!! SPARA !!!
+        $.each( a, function(i,v) {
+             $.each( v.split('\n'), function(index, value) {
+                //console.log("Value row" + index + " is " + value);
+
+                //om man kör följande istället för console.log, så skrivs ut den sista
+                //value += value + "</br>";
+                //$("#output").text(value);
+                aa.push(value);
+         });
+        });
+
+        
+            // if(aa[1] != "<!DOCTYPE html>")
+            // console.log("<!DOCTYPE html>");
+            // else
+            // console.log(aa[1]);
+            // if(aa[2] != "<html>")
+            // console.log("<html>");
+            // else
+            // console.log(aa[2]);
+
+            //I BRIST PÅ ANNAT, HA DETTA
+            //$("#output").text(aa);
+
+            // for(var i = 0; i < aa.length; i++)
+            // {
+            //     //aa += aa;
+            //     $("#output").text(aa[i]);
+            // }
+
+            // $("#output2").text(aa.join(' '));
+
+            // console.log("NU FÅR VI SE");
+            // console.log("JAPP NU SÅ ");
+            // console.log(aa[5]);
+
+            // for (var elem in aa)
+            // {
+            //     $("#output3").text(aa[elem] + '</br>');
+            // }
+
+            // arr = jQuery.map( aa, function( a ) {
+            //     return a;
+            
+            // });
+            // $("#output4").text(arr);
+
+            var result;
+
+            for (i=0;i<aa.length;i++){
+             result+=aa[i]+"\r\n"; //depends on OS
+                }
+
+                $("#output5").append(result);
+    }
+
+});
+
+    });
+
+});
+    </script>
+
+    <div id="test">
+        <input type="text" id="link" name="link" required>
+
+        <!-- <textarea id="output" name="output"></textarea> -->
+    </div>
+    <div id="output"></div>
+    <div id="output2"></div>
+    <div id="output3"></div>
+    <div id="output4"></div>
+    <div id="output5"></div>
+
+</body>
+</html>
