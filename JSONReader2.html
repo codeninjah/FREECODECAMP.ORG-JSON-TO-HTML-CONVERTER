@@ -5,6 +5,9 @@
         src="http://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
 
 <body>
@@ -89,7 +92,20 @@
                 }
 
                 $("#output5").append(result);
-    }
+
+                //TESTAR FÖR ATT FÅ TILL TEXTEN TILL TEXTAREA
+                $("#txtarea").val(result);
+
+                //TESTA KNAPP
+                //FRÅN TEXTRUTA KOD TILL HTML
+                $("#btn").click(function(){
+                    //var t = $("txtarea").val();
+                    var comment = $.trim($("#txtarea").val());
+                    $("#output5").append(comment);
+                });
+            }
+
+
 
 });
 
@@ -99,15 +115,21 @@
     </script>
 
     <div id="test">
-        <input type="text" id="link" name="link" required>
+        <input type="text" id="link" name="link" placeholder="Path to JSON file" required>
 
         <!-- <textarea id="output" name="output"></textarea> -->
     </div>
-    <div id="output"></div>
-    <div id="output2"></div>
-    <div id="output3"></div>
-    <div id="output4"></div>
+
+<div id="wrap">
+    <div id="output2">
+        <textarea id="txtarea" placeholder="Code will be shown here"></textarea>
+    </div>
+    <!-- <div id="output3"></div>
+    <div id="output4"></div> -->
     <div id="output5"></div>
+    <hr>
+    <input type="button" ID="btn" value="Code to HTML">
+</div>
 
 </body>
 </html>
